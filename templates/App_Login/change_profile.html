@@ -1,0 +1,25 @@
+{% extends  "base.html" %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}
+
+    Change Profile
+
+{% endblock %}
+
+{% block body_block %}
+
+<h2> Change your profile</h2>
+{% csrf_token %}
+
+<form method="post">
+    {{form |crispy}}    
+    {% csrf_token %}
+    <p>Raw passwords are not stored, so there is no way to see this user’s password, but you can change the password using <a href="{% url 'pass_change' %}">this form </a>.</p>
+
+    <input type="submit" name="Change" class="btn btn-info"  value="Change">
+
+</form>
+      
+{% endblock %}

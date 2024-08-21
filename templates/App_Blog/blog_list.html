@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}
+  Home
+{% endblock title %}
+
+{% block body_block %}
+
+  {% for blog in  blogs %}
+   <h2> {{ blog.blog_title }}</h2> 
+   <i>{{  blog.publish_date }}</i>
+
+
+   <div class="row">
+
+    <div class="col-sm-4">
+
+      <img src="/media/{{blog.blog_image}}" alt="{{blog.blog_title}}" title="{{blog.blog_title}}" width="100%">
+
+    </div>
+
+    <div class="col-sm-8">
+      <p>{{blog.blog_content | linebreaks}}
+        <a href="{% url 'blog_details' slug=blog.slug %}">Read More</a>
+      </p>
+      <h6> Posted By <a href="#">{{blog.author}}</a></h6>
+    </div>
+  
+  </div>
+  {% endfor %}
+{% endblock body_block %}
